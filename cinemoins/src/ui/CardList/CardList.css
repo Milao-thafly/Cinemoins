@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.caroussel {
+   width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    list-style: none;
+    min-width: 700px;
+
+
+}
+
+.caroussel li {
+    min-width: 150px;
+    flex: 0 0  auto;
+}
+
+
+.arrowed-carrousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: calc(400px * 4 + 0px);
+}
+
+
+.title{
+    overflow:auto;
+}
