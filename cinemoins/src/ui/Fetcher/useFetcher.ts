@@ -15,13 +15,11 @@ export const useFetcher = <T>(endpoint: string) => {
                 setIsLoading(true);
                 setIsError(false);
 
-                // const res = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=aebad9df2bd324d06a86f8e8c658080a");
                 const res = await fetch(`${BASE_URL}/${endpoint}?api_key=aebad9df2bd324d06a86f8e8c658080a`);
 
                 const data = await res.json();
                 setMovies(data.results ?? []);
 
-                // setMovie(movie.results);
             } catch (err) {
                 setIsError(true);
             } finally {
@@ -30,9 +28,6 @@ export const useFetcher = <T>(endpoint: string) => {
         };
         fetchMovies();
     }, [endpoint]);
-    // const handleIncrement = () => {
-    //     useFetcher();
-    // }
-    // console.log(handleIncrement);
+    
     return { movies, isLoading, isError}
     };
