@@ -36,17 +36,3 @@ export const Homepage = () => {
 
     )
 }
-
-
-    // const [joke, setJoke] = useState<string | undefined>(undefined);
-    // const fetcher = async () => {
-    //     const chuck = await fetch("https://api.themoviedb.org/3/configuration")
-    //     const data = await chuck.json()
-
-    //     const joke = data.value;
-    //     setJoke(joke);
-    // };
-    // useEffect(() => {
-
-    //     fetcher();
-    // }, []);
