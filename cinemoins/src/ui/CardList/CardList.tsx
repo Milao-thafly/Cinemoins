@@ -2,7 +2,6 @@ import "./CardList.css"
 import { Card } from "../Card/Card"
 import { useFetcher } from "../Fetcher/useFetcher";
 import type { ApiListResult, Movie}   from "../../core/types/Api"
-import { useCarrouselSlide } from "../../core/slide/useCarrouselSlide";
 import  { useCarousel } from "../../core/slide/useCarroussel"
 
 
@@ -12,7 +11,9 @@ export const CardList = () => {
     const upcommingMovies = useFetcher<ApiListResult<Movie[]>>("movie/upcoming")
 
     const { start, end, next, prev } = useCarousel(popularMovies.movies || [], 6);
-    const maxVisibleSlide = useCarrouselSlide()
+    // const { start, end, next, prev } = useCarousel(legitVoteMovies.movies || [], 6);
+
+        
 
     if (popularMovies.isLoading) return <p>Charge maintenant...</p>
 
@@ -21,10 +22,17 @@ export const CardList = () => {
 }
     if (popularMovies.isError) return <p>Retourne chez toi</p>
 
+        if (legitVoteMovies.isLoading) return <p>Charge maintenant...</p>
+
+    if (!legitVoteMovies.isLoading && !legitVoteMovies.isError) {
+    // console.log(popularMovies.movies.map(m => m.poster_path));  
+}
+    if (legitVoteMovies.isError) return <p>Retourne chez toi</p>
 
 
 return (
 <>
+
 <h2>Popular Movies</h2>
 
   <div className="arrowed-carrousel">
@@ -35,7 +43,7 @@ return (
           <ul className="caroussel">
 
             {popularMovies.movies.slice(start, end ).map((movie) => {
-              console.log(movie.poster_path); 
+
               return (
                 <li key={movie.id}>
                   <Card
@@ -46,7 +54,8 @@ return (
                 </li>
                 
               );
-              
+                            // console.log(movie.poster_path); 
+
             })}
             
           </ul>
@@ -60,12 +69,14 @@ return (
 <h2>Top Movies</h2>
   <div className="arrowed-carrousel">
 
-        <ul className="caroussel">
-          <div className="container-arrow">
+            <div className="container-arrow">
               <button className="arrow-left" onClick={prev}> {"<"} </button>
 
             </div>
+        <ul className="caroussel">
+          
           {legitVoteMovies.movies.map((movie) => {
+            
             console.log(movie.poster_path); 
             return (
               <li key={movie.id}>
@@ -90,12 +101,13 @@ return (
 
 <h2>Upcoming Movies</h2>
   <div className="arrowed-carrousel">
-          <ul className="caroussel">
-
-              <div className="container-arrow">
+    <div className="container-arrow">
               <button className="arrow-left" onClick={prev}> {"<"} </button>
 
             </div>
+          <ul className="caroussel">
+
+              
             {upcommingMovies.movies.map((movie) => {
               console.log(movie.poster_path); 
               return (

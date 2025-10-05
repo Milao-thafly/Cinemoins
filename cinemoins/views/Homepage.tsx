@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import { useEffect } from 'react'
 import { CardList } from "../src/ui/CardList/CardList"
-import { useFetcher } from '../src/ui/Fetcher/useFetcher'
 export const Homepage = () => {
 
     const [count, setCount] = useState(0);
